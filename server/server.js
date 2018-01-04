@@ -1,4 +1,5 @@
 const express = require('express')
+const favicon = require('serve-favicon')
 const ReactSSR = require('react-dom/server')
 const fs = require('fs')
 const path = require('path')
@@ -6,6 +7,8 @@ const path = require('path')
 const isDev = process.env.NODE_ENV === 'development'// 判断是否是开发环境
 
 const app = express()
+
+app.use(favicon(path.join(__dirname, '../favicon.ico')))
 
 if (!isDev) { // 不是开发
   const serverEntry = require('../dist/server-entry').default
