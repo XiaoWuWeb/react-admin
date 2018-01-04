@@ -7,6 +7,7 @@ module.exports = webpackMerge(baseConfig, {
   entry: {// 应用入口
     app: path.join(__dirname, '../client/server-entry.js')// 绝对输出路径
   },
+  externals: Object.keys(require('../package.json').dependencies),
   output: {// 输出口
     filename: 'server-entry.js',
     libraryTarget: 'commonjs2'// 加载方案，适用于nodejs
